@@ -18,4 +18,9 @@ class Student extends Model
         'gender',
         'photo',
     ];
+
+    public function extracurriculars()
+    {
+        return $this->hasMany(StudentExtracurricular::class);
+    }
 }

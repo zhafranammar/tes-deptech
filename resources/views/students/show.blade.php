@@ -57,6 +57,27 @@
                             @endif
                             <input type="file" name="photo" id="photo" class="border p-2 w-full">
                         </div>
+
+                        <!-- Ekstrakurikuler Siswa -->
+                        <h3 class="text-xl mt-4 mb-2">Ekstrakurikuler</h3>
+                        <table class="min-w-full border mb-4">
+                            <thead>
+                                <tr>
+                                    <th class="border px-4 py-2">Nama Ekstrakurikuler</th>
+                                    <th class="border px-4 py-2">Tahun Mulai</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($student->extracurriculars as $extracurricular)
+                                    <tr>
+                                        <td class="border px-4 py-2">{{ $extracurricular->extracurricular_name }}</td>
+                                        <td class="border px-4 py-2">{{ $extracurricular->start_year }}</td>
+                                        
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
                         <div class="flex flex-col md:flex-row justify-between mb-8 font-roboto">
                             <a href="{{ route('students.edit', $student->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 md:mb-0 flex items-center">
                                 Edit Siswa

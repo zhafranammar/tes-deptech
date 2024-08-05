@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Storage;
 class StudentController extends Controller
 {
     /**
+     * Dashboard Page
+     */
+    public function dashboard()
+    {
+        $students = Student::with('extracurriculars')->get();
+        return view('dashboard', compact('students'));
+    }
+    /**
      * Display a listing of the resource.
      */
     public function index()
@@ -54,8 +62,9 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Student $student)
+    public function show(int $id)
     {
+        $student = Student::with('extracurriculars')->findOrFail($id);
         return view('students.show', compact('student'));
     }
 
